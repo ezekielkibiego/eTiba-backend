@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'auth_user',
+    'patients',
     
     # Third-party apps
     'rest_framework',
