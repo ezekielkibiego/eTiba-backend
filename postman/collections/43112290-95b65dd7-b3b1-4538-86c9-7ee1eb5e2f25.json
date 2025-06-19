@@ -1,0 +1,2182 @@
+{
+	"info": {
+		"_postman_id": "43112290-95b65dd7-b3b1-4538-86c9-7ee1eb5e2f25",
+		"name": "etiba",
+		"description": "A simple system for a healthcare appointment scheduling system.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "register user",
+					"id": "43112290-6a7c727c-3531-4251-9dcb-342cccf98f37",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"kibiezekiel@gmail.com\",\n    \"first_name\": \"man\",\n    \"last_name\": \"kim\",\n    \"phone\": \"+2547969214547\",\n    \"password\": \"StrongPassword123!\",\n    \"password2\": \"StrongPassword123!\",\n    \"role\": \"PATIENT\" \n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}api/auth/register/",
+							"host": [
+								"{{BASE_URL}}api"
+							],
+							"path": [
+								"auth",
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login user",
+					"id": "43112290-f5493138-dce2-4a0f-ab71-62496402f341",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"mankim8079@gmail.com\",\n    \"password\": \"Kibiego\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}api/auth/login/",
+							"host": [
+								"{{BASE_URL}}api"
+							],
+							"path": [
+								"auth",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"id": "43112290-ed4ca407-a56b-4d52-b524-10957c4888e8",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{patient_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc1MTEyMDU5OSwiaWF0IjoxNzQ5OTEwOTk5LCJqdGkiOiIyZjRmZGI1MjI1YzY0OTQ5YTY4NWIxMDJkMTM1ZDU2ZiIsInVzZXJfaWQiOiI4ODk5NDNlNi00ODNlLTRkZDAtOGUwNS0yNWQ1YjE0OGNmY2QifQ.z6cLGV0LGsO5QrzpygU3j_bilE822j8J0ROlRR0gUBs\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}api/auth/logout/",
+							"host": [
+								"{{BASE_URL}}api"
+							],
+							"path": [
+								"auth",
+								"logout",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "refresh",
+					"id": "43112290-90487146-4829-4596-9d3a-33446dc9ae40",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{doctor_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc1MTEyMTM3NSwiaWF0IjoxNzQ5OTExNzc1LCJqdGkiOiIxMDg0ZDk0Mjg5Njc0OTlkYThhNDc4NTUxYThjNTM4YiIsInVzZXJfaWQiOiI1YmIwZmVhZi04ODU2LTQ1ODYtOGZmNC1lNDFhOTc4NTZmMjUifQ.e4V5lYBaldqj-6DRBPK2DAujlU9kP_LfaMf8xW9cDvg\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}api/auth/refresh/",
+							"host": [
+								"{{BASE_URL}}api"
+							],
+							"path": [
+								"auth",
+								"refresh",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "resend verification link",
+					"id": "43112290-fa8ecdab-8d8b-4eca-aa5a-ea9db657f6f2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"kibiezekiel@gmail.com\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}api/auth/resend-verification-email/",
+							"host": [
+								"{{BASE_URL}}api"
+							],
+							"path": [
+								"auth",
+								"resend-verification-email",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "vertify email",
+					"id": "43112290-5e69ce83-2e8b-4fde-bb7a-089d8625f26e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}api/auth/verify-email/ZGVkNDU3MDEtMjM0Zi00MGFhLTgzMDMtZmUzODUwY2EwYmIx/crehwv-49d7f07b094ebcd4ad6810057419bdc2/",
+							"host": [
+								"{{BASE_URL}}api"
+							],
+							"path": [
+								"auth",
+								"verify-email",
+								"ZGVkNDU3MDEtMjM0Zi00MGFhLTgzMDMtZmUzODUwY2EwYmIx",
+								"crehwv-49d7f07b094ebcd4ad6810057419bdc2",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "43112290-5a1c1a70-d046-4e3d-9a80-4a41241f0a61",
+			"description": "Contains all the endpoints for authentication and verification f a new user"
+		},
+		{
+			"name": "patients",
+			"item": [
+				{
+					"name": "register patient",
+					"id": "43112290-086fa420-0d8b-4b64-be62-36928980cef8",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"kibiezekiel@gmail.com.com\",\n    \"password\": \"Kibiego\",\n    \"first_name\": \"Kibiego\",\n    \"last_name\": \"Ezekiel\",\n    \"phone\": \"+12345678901\",\n    \"date_of_birth\": \"1990-05-15\",\n    \"gender\": \"M\",\n    \"address\": \"123 Health St, Wellness City\",\n    \"emergency_contact\": \"+19876543210\",\n    \"insurance_provider\": \"MediCare Plus\",\n    \"insurance_number\": \"MCP98765XYZ\",\n    \"medical_history\": \"Generally healthy, seasonal allergies.\",\n    \"allergies\": \"Pollen, Dust Mites\",\n    \"current_medications\": \"Antihistamines as needed\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}api/patients/register/",
+							"host": [
+								"{{BASE_URL}}api"
+							],
+							"path": [
+								"patients",
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update myself",
+					"id": "43112290-5e89c73d-213d-4b6e-a59e-5286d1fd7a66",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{patient_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"address\": \"Naivasha Road, Nairobi\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}api/patients/me/",
+							"host": [
+								"{{BASE_URL}}api"
+							],
+							"path": [
+								"patients",
+								"me",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get profile",
+					"id": "43112290-d813a0b8-6380-4b17-8373-c0af5a6688da",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{patient_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"address\": \"Naivasha Road, Nairobi\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}api/patients/me/",
+							"host": [
+								"{{BASE_URL}}api"
+							],
+							"path": [
+								"patients",
+								"me",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update patient",
+					"id": "43112290-69276b78-1b2b-4749-86f7-51285d6bce23",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{patient_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"insurance_provider\": \"Midhill Hospital\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}api/patients/f2607080-a8aa-47fb-a540-907abaf0acb3/update/",
+							"host": [
+								"{{BASE_URL}}api"
+							],
+							"path": [
+								"patients",
+								"f2607080-a8aa-47fb-a540-907abaf0acb3",
+								"update",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deactivate patient",
+					"id": "43112290-150cbea2-5502-427a-9285-1dc2fa091ba6",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"insurance_provider\": \"Midhill Hospital\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}api/patients/f2607080-a8aa-47fb-a540-907abaf0acb3/deactivate/",
+							"host": [
+								"{{BASE_URL}}api"
+							],
+							"path": [
+								"patients",
+								"f2607080-a8aa-47fb-a540-907abaf0acb3",
+								"deactivate",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list patients",
+					"id": "43112290-63acc837-cf22-4800-831b-5c3a7cf6193f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"kibiezekiel@gmail.com\",\n    \"password\": \"Kibiego\",\n    \"first_name\": \"Kibiego\",\n    \"last_name\": \"Ezekiel\",\n    \"phone\": \"+12345678901\",\n    \"date_of_birth\": \"1990-05-15\",\n    \"gender\": \"M\",\n    \"address\": \"123 Health St, Wellness City\",\n    \"emergency_contact\": \"+19876543210\",\n    \"insurance_provider\": \"MediCare Plus\",\n    \"insurance_number\": \"MCP98765XYZ\",\n    \"medical_history\": \"Generally healthy, seasonal allergies.\",\n    \"allergies\": \"Pollen, Dust Mites\",\n    \"current_medications\": \"Antihistamines as needed\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}api/patients/",
+							"host": [
+								"{{BASE_URL}}api"
+							],
+							"path": [
+								"patients",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search patients",
+					"id": "43112290-f78dc7c6-8264-43ab-974a-bf6b76bab29f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"kibiezekiel@gmail.com\",\n    \"password\": \"Kibiego\",\n    \"first_name\": \"Kibiego\",\n    \"last_name\": \"Ezekiel\",\n    \"phone\": \"+12345678901\",\n    \"date_of_birth\": \"1990-05-15\",\n    \"gender\": \"M\",\n    \"address\": \"123 Health St, Wellness City\",\n    \"emergency_contact\": \"+19876543210\",\n    \"insurance_provider\": \"MediCare Plus\",\n    \"insurance_number\": \"MCP98765XYZ\",\n    \"medical_history\": \"Generally healthy, seasonal allergies.\",\n    \"allergies\": \"Pollen, Dust Mites\",\n    \"current_medications\": \"Antihistamines as needed\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}api/patients/?search=manasseh",
+							"host": [
+								"{{BASE_URL}}api"
+							],
+							"path": [
+								"patients",
+								""
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "manasseh"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "filter",
+					"id": "43112290-bf32606e-ab31-4249-b12f-69ac691c2f9f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"kibiezekiel@gmail.com\",\n    \"password\": \"Kibiego\",\n    \"first_name\": \"Kibiego\",\n    \"last_name\": \"Ezekiel\",\n    \"phone\": \"+12345678901\",\n    \"date_of_birth\": \"1990-05-15\",\n    \"gender\": \"M\",\n    \"address\": \"123 Health St, Wellness City\",\n    \"emergency_contact\": \"+19876543210\",\n    \"insurance_provider\": \"MediCare Plus\",\n    \"insurance_number\": \"MCP98765XYZ\",\n    \"medical_history\": \"Generally healthy, seasonal allergies.\",\n    \"allergies\": \"Pollen, Dust Mites\",\n    \"current_medications\": \"Antihistamines as needed\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}api/patients/?first_name=bob",
+							"host": [
+								"{{BASE_URL}}api"
+							],
+							"path": [
+								"patients",
+								""
+							],
+							"query": [
+								{
+									"key": "first_name",
+									"value": "bob"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "43112290-9026ca6c-152b-4a3d-a4b5-1543ad8c0e81"
+		},
+		{
+			"name": "doctors",
+			"item": [
+				{
+					"name": "specialization",
+					"item": [
+						{
+							"name": "list all specializations",
+							"id": "43112290-f3b3f173-fb12-4f92-a8c2-ddd67049ce4b",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{patient_access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}api/doctors/specializations/",
+									"host": [
+										"{{BASE_URL}}api"
+									],
+									"path": [
+										"doctors",
+										"specializations",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "add specialization",
+							"id": "43112290-31008f2f-425b-4195-83df-acb67911c4df",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Pediatrics\",\n    \"description\": \"Branch of medicine dealing with children.\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}api/doctors/specializations/create/",
+									"host": [
+										"{{BASE_URL}}api"
+									],
+									"path": [
+										"doctors",
+										"specializations",
+										"create",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update specialization",
+							"id": "43112290-b2d686c4-489e-467d-9059-f9fded33cbd8",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"description\": \"pediatrics study of children.\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}api/doctors/specializations/09061e0a-d076-47e0-abf8-6b40e72a516b/update/",
+									"host": [
+										"{{BASE_URL}}api"
+									],
+									"path": [
+										"doctors",
+										"specializations",
+										"09061e0a-d076-47e0-abf8-6b40e72a516b",
+										"update",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete specialization",
+							"id": "43112290-b1642405-9924-42da-ba78-27d3e392d305",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}api/doctors/specializations/09061e0a-d076-47e0-abf8-6b40e72a516b/delete/",
+									"host": [
+										"{{BASE_URL}}api"
+									],
+									"path": [
+										"doctors",
+										"specializations",
+										"09061e0a-d076-47e0-abf8-6b40e72a516b",
+										"delete",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "43112290-741816f8-7f67-42ea-897e-bf72270ade0f"
+				},
+				{
+					"name": "doctor availability",
+					"item": [
+						{
+							"name": "get doctors Availability",
+							"id": "43112290-a018a718-8871-403c-9e2f-a104e217a3d3",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}api/doctors/370e60e7-2a95-417b-b46e-7630fb605adc/availability/",
+									"host": [
+										"{{BASE_URL}}api"
+									],
+									"path": [
+										"doctors",
+										"370e60e7-2a95-417b-b46e-7630fb605adc",
+										"availability",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update doctor's availability",
+							"id": "43112290-423788e3-1a0a-4dfd-a90e-aad78fab9bb4",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n    {\n        \"day_of_week\": 0, // Monday\n        \"start_time\": \"09:00:00\",\n        \"end_time\": \"12:30:00\",\n        \"is_active\": true // is_active is set by the view, but can be included\n    },\n    {\n        \"day_of_week\": 2, // Wednesday\n        \"start_time\": \"10:00:00\",\n        \"end_time\": \"16:00:00\",\n        \"break_start\": \"12:00:00\",\n        \"break_end\": \"12:30:00\",\n        \"is_active\": true\n    }\n]\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}api/doctors/370e60e7-2a95-417b-b46e-7630fb605adc/availability/update/",
+									"host": [
+										"{{BASE_URL}}api"
+									],
+									"path": [
+										"doctors",
+										"370e60e7-2a95-417b-b46e-7630fb605adc",
+										"availability",
+										"update",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get availability slot",
+							"id": "43112290-7721f8a1-e110-40ad-8a24-d8950610e218",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}api/doctors/370e60e7-2a95-417b-b46e-7630fb605adc/availability/slots/5d5bc3b1-f2f3-4559-b69f-0fddb7993651/",
+									"host": [
+										"{{BASE_URL}}api"
+									],
+									"path": [
+										"doctors",
+										"370e60e7-2a95-417b-b46e-7630fb605adc",
+										"availability",
+										"slots",
+										"5d5bc3b1-f2f3-4559-b69f-0fddb7993651",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update availability slot",
+							"id": "43112290-47989784-9399-430c-8ad4-c112e3e186ee",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"end_time\": \"17:30:00\",\n    \"is_active\": false\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}api/doctors/370e60e7-2a95-417b-b46e-7630fb605adc/availability/slots/5d5bc3b1-f2f3-4559-b69f-0fddb7993651/",
+									"host": [
+										"{{BASE_URL}}api"
+									],
+									"path": [
+										"doctors",
+										"370e60e7-2a95-417b-b46e-7630fb605adc",
+										"availability",
+										"slots",
+										"5d5bc3b1-f2f3-4559-b69f-0fddb7993651",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete availability slot",
+							"id": "43112290-283c36a2-3a63-4074-93d4-30961716a676",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}api/doctors/370e60e7-2a95-417b-b46e-7630fb605adc/availability/slots/5d5bc3b1-f2f3-4559-b69f-0fddb7993651/",
+									"host": [
+										"{{BASE_URL}}api"
+									],
+									"path": [
+										"doctors",
+										"370e60e7-2a95-417b-b46e-7630fb605adc",
+										"availability",
+										"slots",
+										"5d5bc3b1-f2f3-4559-b69f-0fddb7993651",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "43112290-cd4f3063-b4f5-44fc-af86-29df8f849440"
+				},
+				{
+					"name": "doctor unavailability",
+					"item": [
+						{
+							"name": "get doctors unavailability",
+							"id": "43112290-7c881b27-9333-48d4-9d56-73f119114f4a",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}api/doctors/370e60e7-2a95-417b-b46e-7630fb605adc/unavailability/",
+									"host": [
+										"{{BASE_URL}}api"
+									],
+									"path": [
+										"doctors",
+										"370e60e7-2a95-417b-b46e-7630fb605adc",
+										"unavailability",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create doctors unavailability",
+							"id": "43112290-cba9c120-7b23-43a4-aac2-4d6c63422481",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"start_date\": \"2024-08-01\",\n    \"end_date\": \"2024-08-05\",\n    \"reason\": \"Conference Attendance\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}api/doctors/370e60e7-2a95-417b-b46e-7630fb605adc/unavailability/create/",
+									"host": [
+										"{{BASE_URL}}api"
+									],
+									"path": [
+										"doctors",
+										"370e60e7-2a95-417b-b46e-7630fb605adc",
+										"unavailability",
+										"create",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update doctors unavailability",
+							"id": "43112290-ffa8669e-3afd-4a21-a71d-545d52912c69",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"reason\": \"Extended Conference Attendance\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}api/doctors/370e60e7-2a95-417b-b46e-7630fb605adc/unavailability/936884f1-99dc-4efe-9e38-fbe1d181ebcf/update/",
+									"host": [
+										"{{BASE_URL}}api"
+									],
+									"path": [
+										"doctors",
+										"370e60e7-2a95-417b-b46e-7630fb605adc",
+										"unavailability",
+										"936884f1-99dc-4efe-9e38-fbe1d181ebcf",
+										"update",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete doctors unavailability",
+							"id": "43112290-4c15386e-60bc-477e-8375-746772a52084",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"reason\": \"Extended Conference Attendance\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}api/doctors/370e60e7-2a95-417b-b46e-7630fb605adc/unavailability/936884f1-99dc-4efe-9e38-fbe1d181ebcf/delete/",
+									"host": [
+										"{{BASE_URL}}api"
+									],
+									"path": [
+										"doctors",
+										"370e60e7-2a95-417b-b46e-7630fb605adc",
+										"unavailability",
+										"936884f1-99dc-4efe-9e38-fbe1d181ebcf",
+										"delete",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "43112290-6fa573df-e120-4c49-8145-6f1bf5dbecda"
+				},
+				{
+					"name": "list all doctors",
+					"id": "43112290-bfaaebfc-c85d-4757-92e8-cdc70fe77289",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{patient_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}api/doctors/",
+							"host": [
+								"{{BASE_URL}}api"
+							],
+							"path": [
+								"doctors",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "specific doctor profile",
+					"id": "43112290-63348d74-7c40-4b1b-8c1b-4ff6d975c697",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{patient_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}api/doctors/370e60e7-2a95-417b-b46e-7630fb605adc/",
+							"host": [
+								"{{BASE_URL}}api"
+							],
+							"path": [
+								"doctors",
+								"370e60e7-2a95-417b-b46e-7630fb605adc",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update doctor profile",
+					"id": "43112290-258a6ee3-ec50-4c17-8570-400db7a37fe4",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{patient_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"specialization_ids\": [\"b8900c9e-1367-495e-8a54-0759a8a94db6\"]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}api/doctors/370e60e7-2a95-417b-b46e-7630fb605adc/update/",
+							"host": [
+								"{{BASE_URL}}api"
+							],
+							"path": [
+								"doctors",
+								"370e60e7-2a95-417b-b46e-7630fb605adc",
+								"update",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deactivate Account",
+					"id": "43112290-f7365c80-daf7-43fd-8aa2-b6229781d24e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}api/doctors/370e60e7-2a95-417b-b46e-7630fb605adc/deactivate/",
+							"host": [
+								"{{BASE_URL}}api"
+							],
+							"path": [
+								"doctors",
+								"370e60e7-2a95-417b-b46e-7630fb605adc",
+								"deactivate",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register new doctor",
+					"id": "43112290-5d16c7a9-e740-4ff5-a2e0-9e84ed04d2f8",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"mankim8079@gmail.com\",\n    \"password\": \"Kibiego\",\n    \"first_name\": \"Emily\",\n    \"last_name\": \"Carter\",\n    \"phone\": \"+15551230001\",\n    \"license_number\": \"DOCLIC001\",\n    \"years_of_experience\": 5,\n    \"consultation_fee\": \"150.00\",\n    \"bio\": \"Experienced general practitioner.\",\n    \"office_address\": \"123 Health Clinic, Wellness City\",\n    \"is_available\": true,\n    \"specializations\": [] // Optional: List of UUIDs of existing Specialization objects\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}api/doctors/register/",
+							"host": [
+								"{{BASE_URL}}api"
+							],
+							"path": [
+								"doctors",
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search doctors",
+					"id": "43112290-2ac94592-76f6-45fe-ae55-e291c3649ba0",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"mankim8079@gmail.com\",\n    \"password\": \"Kibiego\",\n    \"first_name\": \"Emily\",\n    \"last_name\": \"Carter\",\n    \"phone\": \"+15551230001\",\n    \"license_number\": \"DOCLIC001\",\n    \"years_of_experience\": 5,\n    \"consultation_fee\": \"150.00\",\n    \"bio\": \"Experienced general practitioner.\",\n    \"office_address\": \"123 Health Clinic, Wellness City\",\n    \"is_available\": true,\n    \"specializations\": [] // Optional: List of UUIDs of existing Specialization objects\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}api/doctors/?search=emily",
+							"host": [
+								"{{BASE_URL}}api"
+							],
+							"path": [
+								"doctors",
+								""
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "emily"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "filter",
+					"id": "43112290-958adf24-3d39-48a9-a217-5edd649208af",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"mankim8079@gmail.com\",\n    \"password\": \"Kibiego\",\n    \"first_name\": \"Emily\",\n    \"last_name\": \"Carter\",\n    \"phone\": \"+15551230001\",\n    \"license_number\": \"DOCLIC001\",\n    \"years_of_experience\": 5,\n    \"consultation_fee\": \"150.00\",\n    \"bio\": \"Experienced general practitioner.\",\n    \"office_address\": \"123 Health Clinic, Wellness City\",\n    \"is_available\": true,\n    \"specializations\": [] // Optional: List of UUIDs of existing Specialization objects\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}api/doctors/?is_available=false",
+							"host": [
+								"{{BASE_URL}}api"
+							],
+							"path": [
+								"doctors",
+								""
+							],
+							"query": [
+								{
+									"key": "is_available",
+									"value": "false"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "43112290-f9ddae01-46a8-48f7-9984-590d1c2ba6db"
+		},
+		{
+			"name": "appointments",
+			"item": [
+				{
+					"name": "list appointments",
+					"id": "43112290-45e5b2e9-b330-4763-9cc8-bb813606efe1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BASE_URL}}api/appointments/",
+							"host": [
+								"{{BASE_URL}}api"
+							],
+							"path": [
+								"appointments",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create new appointment",
+					"id": "43112290-cf5f60ad-30fb-4c6f-938e-1b962402b846",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"doctor_id\": \"370e60e7-2a95-417b-b46e-7630fb605adc\", // Replace with an actual Doctor's UUID\n    \"appointment_datetime\": \"2025-06-18T9:00:00Z\", // Must be a future UTC datetime\n    \"reason\": \"Follow-up consultation regarding recent tests.\",\n    \"duration\": 30, // Optional, defaults to 30\n    \"appointment_type\": \"follow_up\", // Optional, defaults to 'consultation'\n    \"notes\": \"Please bring previous test results.\", // Optional\n    \"symptoms\": \"None, routine follow-up.\", // Optional\n    \"is_urgent\": true, // Optional\n    \"patient_id\": \"00eddfa3-e277-4d5c-9426-8eeccca6ed90\" // Include if Admin/Doctor is booking for this patient\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}api/appointments/",
+							"host": [
+								"{{BASE_URL}}api"
+							],
+							"path": [
+								"appointments",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update appointment",
+					"id": "43112290-84884837-ac00-44d6-bc07-1dbab15d187a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"doctor_id\": \"370e60e7-2a95-417b-b46e-7630fb605adc\", // Required\n    \"appointment_type\": \"consultation\", // Optional, default 'consultation'\n    \"reason\": \"Annual checkup\", // Required\n    \"notes\": \"Patient mentioned feeling tired lately.\", // Optional\n    \"symptoms\": \"Fatigue, occasional headaches\" // Optional\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}api/appointments/f94eaf3a-0377-48b5-abb8-fb2bc18508ae/",
+							"host": [
+								"{{BASE_URL}}api"
+							],
+							"path": [
+								"appointments",
+								"f94eaf3a-0377-48b5-abb8-fb2bc18508ae",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get specific appointment",
+					"id": "43112290-768dc28a-529d-464e-a32a-c0648ddd278f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}api/appointments/52121ae4-16a9-4727-a5c9-b8f54702ee86/",
+							"host": [
+								"{{BASE_URL}}api"
+							],
+							"path": [
+								"appointments",
+								"52121ae4-16a9-4727-a5c9-b8f54702ee86",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete specific appointment",
+					"id": "43112290-aca833ab-962c-41c0-823a-78491e64fa29",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}api/appointments/52121ae4-16a9-4727-a5c9-b8f54702ee86/",
+							"host": [
+								"{{BASE_URL}}api"
+							],
+							"path": [
+								"appointments",
+								"52121ae4-16a9-4727-a5c9-b8f54702ee86",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update appointment status",
+					"id": "43112290-c6d17d89-e20b-4a7d-ad98-56ff6e450a62",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"confirmed\", // e.g., 'confirmed', 'completed', 'no_show'\n    \"reason\": \"Doctor confirmed the appointment.\" // Optional\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}api/appointments/52121ae4-16a9-4727-a5c9-b8f54702ee86/status/",
+							"host": [
+								"{{BASE_URL}}api"
+							],
+							"path": [
+								"appointments",
+								"52121ae4-16a9-4727-a5c9-b8f54702ee86",
+								"status",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check availability for booking",
+					"id": "43112290-a911b6d9-dbcd-4dd2-a60b-4b0cf51a981f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}api/appointments/availability?doctor_id=370e60e7-2a95-417b-b46e-7630fb605adc&date=2025-07-21&duration=30",
+							"host": [
+								"{{BASE_URL}}api"
+							],
+							"path": [
+								"appointments",
+								"availability"
+							],
+							"query": [
+								{
+									"key": "doctor_id",
+									"value": "370e60e7-2a95-417b-b46e-7630fb605adc"
+								},
+								{
+									"key": "date",
+									"value": "2025-07-21"
+								},
+								{
+									"key": "duration",
+									"value": "30"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "43112290-64677ff6-c453-4438-9daf-4d364ffe2195"
+		},
+		{
+			"name": "notifications",
+			"item": [
+				{
+					"name": "list notifications",
+					"id": "43112290-939c7a72-f187-46bf-a253-0d2cb175a12a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{doctor_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BASE_URL}}api/notifications/",
+							"host": [
+								"{{BASE_URL}}api"
+							],
+							"path": [
+								"notifications",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "43112290-6be8cb0e-49e3-4d79-b2d7-f48dfc4a3cfc"
+		},
+		{
+			"name": "medical-records",
+			"item": [
+				{
+					"name": "create medical record",
+					"id": "43112290-1a5d3db9-e621-4ad5-92cf-162e843f8117",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{doctor_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"patient\": \"00eddfa3-e277-4d5c-9426-8eeccca6ed90\", // From your appointment body\n    // \"doctor\": \"370e60e7-2a95-417b-b46e-7630fb605adc\", // Usually set automatically if logged-in user is this doctor.\n                                                       // Provide if an admin is creating and needs to specify.\n    \"appointment\": \"fd86c12b-65ed-43d4-a41a-01fbd6507b2e\", // Replace with actual appointment UUID if available and linking is desired\n    \"record_type\": \"consultation\", \n    // ('consultation', 'Consultation Notes'),\n    //     ('diagnosis', 'Diagnosis'),\n    //     ('prescription', 'Prescription'),\n    //     ('lab_result', 'Lab Result'),\n    //     ('imaging', 'Imaging Result'),\n    //     ('procedure', 'Procedure Notes'),\n    //     ('discharge', 'Discharge Summary'),\n    //     ('referral', 'Referral'),\n    \"title\": \"Follow-up Consultation: Recent Tests Review\",\n    \"summary\": \"Patient attended a follow-up for recent test results. Symptoms: None, routine follow-up. Notes: Patient was asked to bring previous test results.\",\n    \"diagnosis\": \"Pending review of all test results. Initial assessment normal.\",\n    \"treatment_plan\": \"Discuss test results and formulate next steps if any.\",\n    \"medications\": null, // or e.g., {\"name\": \"Paracetamol\", \"dosage\": \"500mg\", \"frequency\": \"As needed\"}\n    \"allergies\": null, // or e.g., {\"allergen\": \"Penicillin\", \"reaction\": \"Rash\"}\n    \"lab_results\": null, // or e.g., {\"test_name\": \"Blood Panel\", \"status\": \"Awaiting results\"}\n    \"vital_signs\": {\"temperature_c\": 36.8, \"blood_pressure\": \"120/80\", \"heart_rate_bpm\": 70},\n    \"is_confidential\": false\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}api/medical-records/",
+							"host": [
+								"{{BASE_URL}}api"
+							],
+							"path": [
+								"medical-records",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list medical records",
+					"id": "43112290-fc0c67de-ae77-48fe-a898-4502647a0919",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{doctor_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}api/medical-records/",
+							"host": [
+								"{{BASE_URL}}api"
+							],
+							"path": [
+								"medical-records",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "retrieve specific medical record",
+					"id": "43112290-b79c8a97-050e-4004-8b12-700c3cd34cc9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{doctor_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}api/medical-records/cb2a1a06-3640-48a1-86dc-45f985f9f0d0",
+							"host": [
+								"{{BASE_URL}}api"
+							],
+							"path": [
+								"medical-records",
+								"cb2a1a06-3640-48a1-86dc-45f985f9f0d0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update medical record",
+					"id": "43112290-3b27a318-4cbf-4650-a84a-add8185df4de",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{doctor_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"summary\": \"Patient's cough has subsided. Fever is gone.\",\n    \"treatment_plan\": \"Continue monitoring. Follow up if symptoms return.\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}api/medical-records/cb2a1a06-3640-48a1-86dc-45f985f9f0d0/",
+							"host": [
+								"{{BASE_URL}}api"
+							],
+							"path": [
+								"medical-records",
+								"cb2a1a06-3640-48a1-86dc-45f985f9f0d0",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete medical record",
+					"id": "43112290-9fa3d891-772b-4d96-86d7-d4d82c25242a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{doctor_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}api/medical-records/cb2a1a06-3640-48a1-86dc-45f985f9f0d0/",
+							"host": [
+								"{{BASE_URL}}api"
+							],
+							"path": [
+								"medical-records",
+								"cb2a1a06-3640-48a1-86dc-45f985f9f0d0",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Attachment to a Medical Record",
+					"id": "43112290-bc2c5508-55ac-4d3a-8537-654b28cc8e6a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{doctor_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"uuid": "5a9c4dee-d609-4069-8297-928e39c18bc2",
+									"src": "postman-cloud:///1f04a0bf-1f3f-4c80-85f5-5d0ac52af743"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BASE_URL}}api/medical-records/cb2a1a06-3640-48a1-86dc-45f985f9f0d0/attachments/",
+							"host": [
+								"{{BASE_URL}}api"
+							],
+							"path": [
+								"medical-records",
+								"cb2a1a06-3640-48a1-86dc-45f985f9f0d0",
+								"attachments",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get an attachment",
+					"id": "43112290-26c1d974-0a85-4eaf-bec5-c7f191dbcf74",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{doctor_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}api/medical-records/cb2a1a06-3640-48a1-86dc-45f985f9f0d0/attachments/477d92c5-dd64-4dd3-91fe-a1d0b7116112/",
+							"host": [
+								"{{BASE_URL}}api"
+							],
+							"path": [
+								"medical-records",
+								"cb2a1a06-3640-48a1-86dc-45f985f9f0d0",
+								"attachments",
+								"477d92c5-dd64-4dd3-91fe-a1d0b7116112",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete an attachment",
+					"id": "43112290-fde43906-06bb-49d3-8b3c-c7255b86fd76",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{doctor_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}api/medical-records/cb2a1a06-3640-48a1-86dc-45f985f9f0d0/attachments/477d92c5-dd64-4dd3-91fe-a1d0b7116112/",
+							"host": [
+								"{{BASE_URL}}api"
+							],
+							"path": [
+								"medical-records",
+								"cb2a1a06-3640-48a1-86dc-45f985f9f0d0",
+								"attachments",
+								"477d92c5-dd64-4dd3-91fe-a1d0b7116112",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "43112290-fe4ff657-e6bb-4e9e-85c3-a784ce361d26"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "66c04b75-65d7-48bf-a838-bb59ced1ca5b",
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "cd8514e1-7eef-43db-931e-39e546d891c7",
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_URL",
+			"value": "enter_your_base_url",
+			"type": "string"
+		},
+		{
+			"key": "doctor_access_token",
+			"value": "enter_your_doctor_access_token",
+			"type": "string"
+		},
+		{
+			"key": "patient_access_token",
+			"value": "enter_your_patient_access_token",
+			"type": "string"
+		},
+		{
+			"key": "admin_access_token",
+			"value": "enter_your_admin_access_token",
+			"type": "string"
+		}
+	]
+}
