@@ -16,6 +16,7 @@ from decouple import config
 import cloudinary
 import cloudinary_storage
 from datetime import timedelta
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -98,13 +99,23 @@ WSGI_APPLICATION = 'etiba.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
+# DATABASES = {
+#     "default": dj_database_url.parse(config("DATABASE_URL"))
+# }
+
+DATABASES = {
+    "default": dj_database_url.config(
+        'DATABASE_URL',  # The key to look for in your environment
+        ssl_require=True # Important for Render
+    )
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -188,6 +199,7 @@ REST_FRAMEWORK = {
 # TODO: reset the access token to 1 day 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=7),
+
     'REFRESH_TOKEN_LIFETIME': timedelta(days=14),
     'AUTH_HEADER_TYPES': ('Bearer',),
 }
@@ -246,3 +258,4 @@ SITE_URL = config('SITE_URL', default='http://localhost:8000')
 # Email Verification Link
 # TODO: add an expiry time for the email validation link
 ACCOUNT_ACTIVATION_TIMEOUT_SECONDS = 86400
+
