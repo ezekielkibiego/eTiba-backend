@@ -214,8 +214,8 @@ AUTH_USER_MODEL = 'auth_user.User'
 ALLOWED_REDIRECT_SCHEMES = ['http', 'https', 'ftp', 'ftps', 'mailto']
 
 # Celery Configuration Options
-CELERY_BROKER_URL = config('REDIS_URL', default='redis://localhost:6379/0')  # Using Redis as the message broker
-CELERY_RESULT_BACKEND = config('REDIS_URL', default='redis://localhost:6379/0') # Using Redis for storing task results
+CELERY_BROKER_URL = config('REDIS_URL')  # Using Redis as the message broker
+CELERY_RESULT_BACKEND = config('REDIS_URL') # Using Redis for storing task results
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
