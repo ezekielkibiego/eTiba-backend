@@ -26,7 +26,7 @@ schema_view = get_schema_view(
         default_version='v1',
         description="A simple system for a healthcare appointment scheduling system.",
         terms_of_service="",
-        contact=openapi.Contact(email="gitaumanasseh1@gmail.com"),
+        contact=openapi.Contact(email="kibiezekiel@gmail.com.com"),
         license=openapi.License(name="MIT License"),
     ),
     public=True,
@@ -38,7 +38,11 @@ urlpatterns = [
     path('kib/', admin.site.urls),
     path('api/auth/', include(('auth_user.urls', 'auth_user'), namespace='auth_user')),
     path('api/patients/', include('patients.urls')),
-
+    path('api/medical-records/', include('medical_records.urls')),
+    path('api/appointments/', include('appointments.urls')),
+    path('api/doctors/', include('doctors.urls')),
+    path('api/patients/', include('patients.urls')),
+    path('api/notifications/', include('notifications.urls')),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ]
