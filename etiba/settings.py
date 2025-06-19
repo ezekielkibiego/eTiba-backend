@@ -36,15 +36,14 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    # Django core apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'auth_user',
-    'patients',
-    
+    'django.contrib.staticfiles', # For serving static files
+
     # Third-party apps
     'rest_framework',
     'rest_framework.authtoken',
@@ -56,6 +55,13 @@ INSTALLED_APPS = [
     'cloudinary',
     'cloudinary_storage',
 
+    # Your local apps
+    'auth_user',
+    'patients',
+    'doctors',
+    'appointments',
+    'medical_records',
+    'notifications',
 ]
 
 MIDDLEWARE = [
@@ -66,6 +72,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'etiba.urls'
@@ -154,6 +161,14 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': config('CLOUDINARY_API_SECRET'),
 }
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+# CORS settings
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",  # Vite dev server
+    "http://127.0.0.1:5173",  # Vite dev server
+]
+
+CORS_ALLOW_ALL_ORIGINS = True  # For dev only — lock it down in prod
 
 
 # rest framework
